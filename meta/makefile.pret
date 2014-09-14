@@ -5,5 +5,11 @@
 `Dist-Inkt-Role-Hg`
 	:test-requirement       [ :on "Test::More 0.96"^^:CpanId ];
 	:develop-recommendation [ :on "Dist::Inkt 0.001"^^:CpanId ];
+	:runtime-requirement    [ :on "Dist::Inkt"^^:CpanId ];
+	:runtime-requirement    [ :on "Types::Standard"^^:CpanId ];
+	:runtime-requirement    [ :on "namespace::autoclean"^^:CpanId ];
+	:runtime-requirement    [ :on "Moose::Role"^^:CpanId ];
+	:runtime-requirement    [ :on "File::chdir"^^:CpanId ];
+	:runtime-requirement    [ :on "perl 5.010001"^^:CpanId ];
 	.
 
