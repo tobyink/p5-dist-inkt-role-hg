@@ -4,3 +4,9 @@
 	issued  2014-09-14;
 	label   "Initial release".
 
+`Dist-Inkt-Role-Hg 0.002 cpan:TOBYINK`
+	issued  2014-09-16;
+	changeset [
+		item "Add missing repo link."^^Packaging;
+	].
+

@@ -5,7 +5,7 @@ use warnings;
 package Dist::Inkt::Role::Hg;
 
 our $AUTHORITY = 'cpan:TOBYINK';
-our $VERSION   = '0.001';
+our $VERSION   = '0.002';
 
 use Moose::Role;
 use File::chdir;
