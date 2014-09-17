@@ -34,8 +34,8 @@ after BUILD => sub
 		local $CWD = $self->rootdir;
 		my @stat =
 			grep !/^\?(.+)\.tar.gz/,  # allow the recently built tarball!
-			grep /\w/, 
-			split /\r?\n/, 
+			grep /\w/,
+			split /\r?\n/,
 			`hg status`;
 		if (@stat) {
 			$self->log("Mercurial has uncommitted changes - please commit them");
