@@ -25,25 +25,20 @@ sub _build_source_control_is_hg
 	!! $self->rootdir->child(".hg")->is_dir;
 }
 
-before BuildAll => sub
-{
-	my $self = shift;
-	return unless $self->source_control_is_hg;
-	
-	local $CWD = $self->rootdir;
-	my $stat = `hg status`;
-	if ($stat =~ /\w/) {
-		$self->log("Mercurial has uncommitted changes");
-		$self->log($_) for grep /\w/, split /\r?\n/, $stat;
-		die "Please commit them";
-	}
-};
-
 after BUILD => sub
 {
 	my $self = shift;
 	return unless $self->source_control_is_hg;
-	return unless $self->can("setup_postrelease_action");
+	
+	$self->setup_prerelease_action(sub {
+		local $CWD = $self->rootdir;
+		my $stat = `hg status`;
+		if ($stat =~ /\w/) {
+			$self->log("Mercurial has uncommitted changes - please commit them");
+			$self->log($_) for grep /\w/, split /\r?\n/, $stat;
+			system("/bin/sh");
+		}
+	}) if $self->can("setup_prerelease_action");
 	
 	$self->setup_postrelease_action(sub {
 		my $self = shift;
@@ -52,7 +47,7 @@ after BUILD => sub
 		system("hg", "tag", $self->version);
 		$self->log("hg push");
 		system("hg", "push");
-	});
+	}) if $self->can("setup_postrelease_action");
 };
 
 1;
