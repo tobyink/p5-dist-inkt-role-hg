@@ -10,3 +10,10 @@
 		item "Add missing repo link."^^Packaging;
 	].
 
+`Dist-Inkt-Role-Hg 0.003 cpan:TOBYINK`
+	issued  2014-09-17;
+	changeset [
+		item "Check for uncommitted changes prior to release, not prior to build."^^Change;
+		item "Allow opportunity to fix uncommitted changes."^^Change;
+	].
+
