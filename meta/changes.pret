@@ -17,3 +17,9 @@
 		item "Allow opportunity to fix uncommitted changes."^^Change;
 	].
 
+`Dist-Inkt-Role-Hg 0.004 cpan:TOBYINK`
+	issued  2014-09-17;
+	changeset [
+		item "The just-built tarball should not count as an uncommitted change."^^Change;
+	].
+
